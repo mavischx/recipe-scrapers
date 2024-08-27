@@ -1,7 +1,7 @@
 from ._abstract import AbstractScraper
 
 
-class Template(AbstractScraper):
+class App(AbstractScraper):
     @classmethod
     def host(cls):
         return "example.com"
@@ -38,3 +38,21 @@ class Template(AbstractScraper):
 
     def description(self):
         return self.schema.description()
+
+# Function to scrape using Template
+def scrape_recipe(url):
+    scraper = App()  # Create an instance of the Template class
+    scraper.load(url)  # Assuming there's a method to load the URL
+    return {
+        'title': scraper.title(),
+        'author': scraper.author(),
+        'category': scraper.category(),
+        'total_time': scraper.total_time(),
+        'yields': scraper.yields(),
+        'image': scraper.image(),
+        'ingredients': scraper.ingredients(),
+        'instructions': scraper.instructions(),
+        'ratings': scraper.ratings(),
+        'cuisine': scraper.cuisine(),
+        'description': scraper.description(),
+    }
